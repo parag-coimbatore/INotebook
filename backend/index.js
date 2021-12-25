@@ -7,6 +7,10 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+//if you want to use req.body in auth.jsu need to use this middleware
+app.use(express.json()) 
+
+
 //Available routes that has endpoints 1. "/api/auth" 2. "/api/notes"
 app.use('/api/auth', require('./routes/auth'))
 
