@@ -24,4 +24,6 @@ const UserSchema = new Schema({
     },
   });
 
-module.exports = mongoose.model('user', UserSchema);
+const User = mongoose.model('user', UserSchema);
+User.createIndexes(); //Indexes are created here so that u cant create same accounts with same email
+module.exports = User
