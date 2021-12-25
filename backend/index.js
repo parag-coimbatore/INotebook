@@ -5,7 +5,7 @@ const connectToMongo= require('./db');
 
 const express = require('express')
 const app = express()
-const port = 3000
+const port = 5000
 
 //if you want to use req.body in auth.jsu need to use this middleware
 app.use(express.json()) 

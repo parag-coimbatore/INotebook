@@ -5,10 +5,10 @@ const { body, validationResult } = require('express-validator');
 
 
 
-//Create a user using: POST "/api/auth/". Doesnt require auth
+//Create a user using: POST "/api/auth/createuser". Doesnt require auth. No Login required
 
 
-router.post('/', [
+router.post('/createuser', [
 
     // These validators are taken from express validator website
     // email must be an email
@@ -20,7 +20,7 @@ router.post('/', [
     // password must be at least 5 chars long
     body('password', 'Password should be minimum 5 char').isLength({ min: 5 }),
 
-], (req, res) => {
+], async (req, res) => {
 
     // Here is what to do if the error occurs 
     const errors = validationResult(req);
@@ -28,15 +28,27 @@ router.post('/', [
         return res.status(400).json({ errors: errors.array() });
     }
 
-    User.create({
-        name: req.body.name,
-        password: req.body.password,
-        email: req.body.email
-    }).then(user => res.json(user))
-    .catch(err=> {console.log(err)
-    res.json({error: 'Please enter a unique value', message: err.message})})  //we get  error and message if someone is trying to make account with same email
+    //Checking whether the user with this exists already
+    try {
 
 
+        let user = await User.findOne({ email: req.body.email });
+        //if user exists
+        if (user) {
+            return res.status(400).json({ error: "Sorry a user with this email already exists" })
+        }
+        user = await User.create({
+            name: req.body.name,
+            password: req.body.password,
+            email: req.body.email
+        })
+
+        res.json(user)
+
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Some error occured")
+    }
 })
 
 module.exports = router
