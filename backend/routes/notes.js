@@ -55,6 +55,38 @@ router.post('/addnote', fetchuser, [
     })
 
 
+    // ROUTE 3: Updating an existing note using: GET "/api/notes/updatenote". No login required
+
+    router.put('/updatenote/:id', fetchuser, async (req, res) => {
+
+        //destructuring method to remove title, description, tag
+        const{title, description, tag} = req.body;
+
+        //Create a newNote object
+        const newNote = {};
+        if(title){newNote.title = title};
+        if(description){newNote.description = description};
+        if(tag){newNote.tag = tag};
+
+        //Find the note to be updated and update it
+        let note = await Note.findById(req.params.id);
+
+        //If the note does not exist
+        if(!note){return res.status(404).send("Not found")} 
+
+        //if user's id and the note's id doesn't match then there is someone who is trying to crud with someone else's notes
+        if(note.user.toString() !== req.user.id)
+        {
+            return res.status(401).send("Not Allowed");
+        }
+
+        //Here in this case the note exists
+        note = await Note.findByIdAndUpdate(req.params.id, {$set: newNote}, {new:true})
+        res.json({note})
+    })
+    
+
+
 
 
 module.exports = router
