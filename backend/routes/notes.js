@@ -4,7 +4,6 @@ const fetchuser = require('../middleware/fetchuser');
 const Note = require('../models/Note');
 const { body, validationResult } = require('express-validator');
 
-
 // ROUTE 1: Get all the notes using: GET "/api/notes/fetchallnotes". No login required
 router.get('/fetchallnotes', fetchuser, async (req, res) => {
 
@@ -29,8 +28,6 @@ router.post('/addnote', fetchuser, [
 
         try {
 
-
-
             const { title, description, tag } = req.body;
             // Here is what to do if the error occurs 
             const errors = validationResult(req);
@@ -51,42 +48,70 @@ router.post('/addnote', fetchuser, [
             console.error(error.message);
             res.status(500).send("Internal Server Error");
         }
-
     })
 
 
-    // ROUTE 3: Updating an existing note using: GET "/api/notes/updatenote". No login required
+// ROUTE 3: Updating an existing note using: PUT "/api/notes/updatenote". No login required
 
-    router.put('/updatenote/:id', fetchuser, async (req, res) => {
+router.put('/updatenote/:id', fetchuser, async (req, res) => {
 
-        //destructuring method to remove title, description, tag
-        const{title, description, tag} = req.body;
+    //destructuring method to remove title, description, tag
+    const { title, description, tag } = req.body;
+
+    try {
 
         //Create a newNote object
         const newNote = {};
-        if(title){newNote.title = title};
-        if(description){newNote.description = description};
-        if(tag){newNote.tag = tag};
+        if (title) { newNote.title = title };
+        if (description) { newNote.description = description };
+        if (tag) { newNote.tag = tag };
 
         //Find the note to be updated and update it
         let note = await Note.findById(req.params.id);
 
         //If the note does not exist
-        if(!note){return res.status(404).send("Not found")} 
+        if (!note) { return res.status(404).send("Not found") }
 
         //if user's id and the note's id doesn't match then there is someone who is trying to crud with someone else's notes
-        if(note.user.toString() !== req.user.id)
-        {
+        if (note.user.toString() !== req.user.id) {
             return res.status(401).send("Not Allowed");
         }
 
         //Here in this case the note exists
-        note = await Note.findByIdAndUpdate(req.params.id, {$set: newNote}, {new:true})
-        res.json({note})
-    })
-    
+        note = await Note.findByIdAndUpdate(req.params.id, { $set: newNote }, { new: true })
+        res.json({ note })
 
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Internal Server Error");
+    }
+})
 
+// ROUTE 4: Deleting an existing note using: DELETE "/api/notes/deletenote". No login required
 
+router.delete('/deletenote/:id', fetchuser, async (req, res) => {
+
+    try {
+        //Find the note to be deleted and delete it
+        let note = await Note.findById(req.params.id);
+
+        //If the note does not exist
+        if (!note) { return res.status(404).send("Not found") }
+
+        //if user's id and the note's id doesn't match then there is someone who is trying to crud with someone else's notes
+        //Allow deletion if the owner owns this note
+        if (note.user.toString() !== req.user.id) {
+            return res.status(401).send("Not Allowed");
+        }
+
+        //Here in this case the note exists
+        note = await Note.findByIdAndDelete(req.params.id)
+        res.json({ "Success": "Note has been deleted", note: note })
+
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Internal Server Error");
+    }
+})
 
 module.exports = router
