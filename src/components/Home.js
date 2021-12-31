@@ -1,12 +1,15 @@
-import React from 'react'
-
+import React , {useContext} from 'react'
+import noteContext from "../context/notes/noteContext"
 
 function Home() {
+    const context = useContext(noteContext);
+    const {notes, setNotes} = context; //destructuring to remove notes from body
     return (
         <div>
             <div className="container">
                 <h1 className="text-center my-3">Add a note</h1>
-                <form my-3>
+                {/* form from bootstrap */}
+                <form my-3> 
                     <div class="form-group" className="text-center">
                         <h5 for="exampleInputEmail1" >Email address</h5>
                         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
@@ -27,7 +30,11 @@ function Home() {
 
                 </form>
             </div>
-            <h2>Your notes</h2>
+
+            <h2 className='text-center my-4'>Your notes</h2>
+            {notes.map((note)=> {  //Getting our notes here
+                return note.title;
+            })}
 
         </div>
     )
