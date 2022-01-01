@@ -1,9 +1,7 @@
-import React , {useContext} from 'react'
-import noteContext from "../context/notes/noteContext"
+import Notes from './Notes';
 
 function Home() {
-    const context = useContext(noteContext);
-    const {notes, setNotes} = context; //destructuring to remove notes from body
+ 
     return (
         <div>
             <div className="container">
@@ -31,10 +29,7 @@ function Home() {
                 </form>
             </div>
 
-            <h2 className='text-center my-4'>Your notes</h2>
-            {notes.map((note)=> {  //Getting our notes here
-                return note.title;
-            })}
+            <Notes/>
 
         </div>
     )
