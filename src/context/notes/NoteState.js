@@ -6,7 +6,7 @@ const NoteState = (props) => {
     //For now the notes will be kept hard coded
     const notesInitial = [
         {
-          "_id": "61caf44052f91dc4dab4adaf",
+          "_id": "61caf441052f91dc4dab4adaf",
           "user": "61caf3e952f91dc4dab4ada9",
           "title": "My Title",
           "description": "Wake up early in the morning",
@@ -15,7 +15,7 @@ const NoteState = (props) => {
           "__v": 0
         },
         {
-          "_id": "61caf45652f91dc4dab4adb1",
+          "_id": "61caf456522f91dc4dab4adb1",
           "user": "61caf3e952f91dc4dab4ada9",
           "title": "My Title",
           "description": "Get well soon",
@@ -24,7 +24,7 @@ const NoteState = (props) => {
           "__v": 0
         },
         {
-          "_id": "61caf44052f91dc4dab4adaf",
+          "_id": "61caf44052f391dc4dab4adaf",
           "user": "61caf3e952f91dc4dab4ada9",
           "title": "My Title",
           "description": "Wake up early in the morning",
@@ -33,7 +33,7 @@ const NoteState = (props) => {
           "__v": 0
         },
         {
-          "_id": "61caf45652f91dc4dab4adb1",
+          "_id": "61caf45652f491dc4dab4adb1",
           "user": "61caf3e952f91dc4dab4ada9",
           "title": "My Title",
           "description": "Get well soon",
@@ -42,7 +42,7 @@ const NoteState = (props) => {
           "__v": 0
         },
         {
-          "_id": "61caf44052f91dc4dab4adaf",
+          "_id": "61caf44052f591dc4dab4adaf",
           "user": "61caf3e952f91dc4dab4ada9",
           "title": "My Title",
           "description": "Wake up early in the morning",
@@ -51,7 +51,7 @@ const NoteState = (props) => {
           "__v": 0
         },
         {
-          "_id": "61caf45652f91dc4dab4adb1",
+          "_id": "61caf45652f961dc4dab4adb1",
           "user": "61caf3e952f91dc4dab4ada9",
           "title": "My Title",
           "description": "Get well soon",
@@ -60,7 +60,7 @@ const NoteState = (props) => {
           "__v": 0
         },
         {
-          "_id": "61caf44052f91dc4dab4adaf",
+          "_id": "61caf44052f91d7c4dab4adaf",
           "user": "61caf3e952f91dc4dab4ada9",
           "title": "My Title",
           "description": "Wake up early in the morning",
@@ -69,7 +69,7 @@ const NoteState = (props) => {
           "__v": 0
         },
         {
-          "_id": "61caf45652f91dc4dab4adb1",
+          "_id": "61caf45652f91dc48dab4adb1",
           "user": "61caf3e952f91dc4dab4ada9",
           "title": "My Title",
           "description": "Get well soon",
@@ -79,6 +79,21 @@ const NoteState = (props) => {
         }
       ]
       const [notes, setnotes] = useState(notesInitial)
+
+      //Add a note
+      const addNote = (id) => {
+
+      }
+
+      //Delete a note
+      const addNote = (id) => {
+        
+      }
+
+      //Edit a note
+      const addNote = (id) => {
+        
+      }
 
     return (
     <NoteContext.Provider value={{notes, setnotes}}>

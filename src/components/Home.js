@@ -8,21 +8,21 @@ function Home() {
                 <h1 className="text-center my-3">Add a note</h1>
                 {/* form from bootstrap */}
                 <form my-3> 
-                    <div class="form-group" className="text-center">
-                        <h5 for="exampleInputEmail1" >Email address</h5>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    <div className="form-group" className="text-center">
+                        <h5 htmlFor="exampleInputEmail1" >Email address</h5>
+                        <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+                        <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
-                    <div class="form-group" className="text-center my-3">
-                        <h5 for="exampleInputPassword1">Password</h5>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
+                    <div className="form-group" className="text-center my-3">
+                        <h5 htmlFor="exampleInputPassword1">Password</h5>
+                        <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
                     </div>
-                    <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    <div className="form-group form-check">
+                        <input type="checkbox" className="form-check-input" id="exampleCheck1" />
+                        <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
                     </div>
-                    <div class="col-md-12 text-center">
-                        <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+                    <div className="col-md-12 text-center">
+                        <button type="submit" className="btn btn-primary btn-lg btn-block">Submit</button>
                     </div>
                     
 
