@@ -6,7 +6,7 @@ import AddNote from './AddNote';
 
 const Notes = () => {
     const context = useContext(noteContext);
-    const { notes, addNote } = context; //destructuring to remove notes from body
+    const { notes } = context; //destructuring to remove notes from body
     return (
         <>
             <AddNote />
