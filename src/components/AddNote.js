@@ -24,12 +24,12 @@ const AddNote = () => {
                     <input type="text" className="form-control" id="title" name="title" aria-describedby="emailHelp" placeholder="Enter title" onChange={onChange}/>
                 </div>
                 <div className="form-group" className="text-center my-5">
+                    <h5 htmlFor="tag">Tag</h5>
+                    <input type="text" className="form-control" id="tag" name="tag" placeholder="Enter tag" onChange={onChange} />
+                </div>
+                <div className="form-group col-lg-1" className="text-center my-5">
                     <h5 htmlFor="description">Description</h5>
                     <input type="text" className="form-control" id="description" name="description" placeholder="Enter description" onChange={onChange} />
-                </div>
-                <div className="form-group" className="text-center my-5">
-                    <h5 htmlFor="description">Tag</h5>
-                    <input type="text" className="form-control" id="tag" name="tag" placeholder="Enter tag" onChange={onChange} />
                 </div>
                 <div className="col-md-12 text-center">
                     <button type="submit" className="btn btn-primary btn-lg btn-block" onClick={handleClick}>Add Note</button>
