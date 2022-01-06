@@ -21,11 +21,11 @@ const AddNote = () => {
             <form my-3>
                 <div className="form-group" className="text-center">
                     <h5 htmlFor="title" >Title</h5>
-                    <input type="text" className="form-control" id="title" name="title" aria-describedby="emailHelp" placeholder="Enter email" onChange={onChange}/>
+                    <input type="text" className="form-control" id="title" name="title" aria-describedby="emailHelp" placeholder="Enter title" onChange={onChange}/>
                 </div>
                 <div className="form-group" className="text-center my-3">
                     <h5 htmlFor="description">Description</h5>
-                    <input type="text" className="form-control" id="description" name="description" placeholder="Password" onChange={onChange} />
+                    <input type="text" className="form-control" id="description" name="description" placeholder="Enter description" onChange={onChange} />
                 </div>
                 <div className="form-group form-check">
                     <input type="checkbox" className="form-check-input" id="exampleCheck1" />
