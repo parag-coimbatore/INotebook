@@ -50,23 +50,24 @@ const Notes = () => {
                                 </div>
                                 <div className="form-group" className="text-center my-5">
                                     <h5 htmlFor="tag">Tag</h5>
-                                    <input type="text" className="form-control" id="etag" name="etag" value={note.etag} placeholder="Enter tag" onChange={onChange} />
+                                    <input type="text" className="form-control" id="etag" name="etag" value={note.etag} placeholder="Enter tag" onChange={onChange}  minLength={5} required/>
                                 </div>
                                 <div className="form-group col-lg-1" className="text-center my-5">
                                     <h5 htmlFor="description">Description</h5>
-                                    <input type="text" className="form-control" id="edescription" value={note.edescription} name="edescription" placeholder="Enter description" onChange={onChange} />
+                                    <input type="text" className="form-control" id="edescription" value={note.edescription} name="edescription" placeholder="Enter description" onChange={onChange} minLength={5} required/>
                                 </div>
                             </form>
                         </div>
                         <div className="modal-footer">
                             <button ref={refClose} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" onClick={handleClick} className="btn btn-primary">Update Note</button>
+                            <button type="button" disabled={note.etitle.length<5 || note.edescription.length<5} onClick={handleClick} className="btn btn-primary">Update Note</button>
                         </div>
                     </div>
                 </div>
             </div>
             <div className="row my-3">
                 <h2 className='text-center my-4'>Your notes</h2>
+                {notes.length === 0 && <h5 className="text-center">No notes to display. Please add notes</h5>}
                 {notes.map((note) => {  //Getting our notes here
                     return <NoteItem key={note._id} updateNote={updateNote} note={note} />
                 })}
