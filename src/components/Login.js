@@ -20,8 +20,9 @@ const Login = (props) => {
           {
               //Save the authtoken and redirect
               localStorage.setItem('token', json.authtoken) 
-              history("/")
               props.showAlert("Successfully logged in","success")
+              history("/")
+              
           }
           else{
             props.showAlert("Invalid details","danger")
@@ -33,6 +34,8 @@ const Login = (props) => {
     }
 
     return (
+        <>
+        <h2 className='text-center'> Login to continue to iNotebook </h2>
         <div>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
@@ -47,6 +50,7 @@ const Login = (props) => {
                 <button type="submit" className="btn btn-primary" >Submit</button>
             </form>
         </div>
+        </>
     )
 }
 

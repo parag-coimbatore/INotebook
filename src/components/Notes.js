@@ -2,13 +2,22 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import noteContext from "../context/notes/noteContext"
 import NoteItem from './NoteItem';
 import AddNote from './AddNote';
+import { useNavigate } from 'react-router-dom';
 
 
 const Notes = (props) => {
     const context = useContext(noteContext);
+    let history = useNavigate()
     const { notes, getNotes, editNote } = context; //destructuring to remove notes from body
     useEffect(() => {
-        getNotes()
+        if(localStorage.getItem('token'))
+        {
+            getNotes()
+        }
+        else{
+            history("/login")
+        }
+       
     }, [])
     const updateNote = (currentNote) => {
         ref.current.click()
