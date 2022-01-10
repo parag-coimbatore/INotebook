@@ -4,7 +4,7 @@ const About = () => {
    
     return (
         <div>
-            This is about page
+            <i class="fas fa-user-circle"></i>
         </div>
     )
 }

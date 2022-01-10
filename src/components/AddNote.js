@@ -18,7 +18,8 @@ const AddNote = (props) => {
     }
     return (
         <div className="container">
-            <h1 className="text-center my-3={value.toString()}">Add a note</h1>
+            <h2 className="text-center mt-5">Welcome to ParaNotes </h2>
+            <h2 className="text-center ">Please add your notes here</h2>
             {/* form from bootstrap */}
             <form my-3>
                 <div className="form-group" className="text-center my-5">

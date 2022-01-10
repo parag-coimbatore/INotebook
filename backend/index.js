@@ -7,6 +7,7 @@ const express = require('express')
 const app = express()
 const port = 5000
 var cors = require('cors')
+
  
 app.use(cors())
 
