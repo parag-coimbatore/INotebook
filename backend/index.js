@@ -7,6 +7,7 @@ const express = require('express')
 const app = express()
 const port = 5000
 var cors = require('cors')
+require('dotenv').config();
  
 app.use(cors())
 
@@ -20,7 +21,7 @@ app.use('/api/auth', require('./routes/auth'))
 app.use('/api/notes', require('./routes/notes'))
 
 
-app.listen(port, () => {
+app.listen(process.env.PORT ||port, () => {
   console.log(`iNotebook backend listening at http://localhost:${port}`)
 })
 
